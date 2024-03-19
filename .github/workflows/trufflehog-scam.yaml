@@ -19,4 +19,4 @@ jobs:
 
       - name: Run TruffleHog
         run: |
-          docker run --rm -it -v "$PWD:/pwd" trufflesecurity/trufflehog:latest github --repo https://github.com/IgorBaio/SecretScanning-SAST.git
+          docker run --rm -v "$PWD:/pwd" trufflesecurity/trufflehog:latest github --repo https://github.com/IgorBaio/SecretScanning-SAST.git
