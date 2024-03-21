@@ -36,4 +36,4 @@ jobs:
             exit 1
           fi
     env:
-      trufflehog_output: ${{ steps.trufflehog.outputs.trufflehog_output }}
+      trufflehog_output: ${{ jobs.trufflehog.steps.trufflehog_output }}
