@@ -20,11 +20,11 @@ jobs:
       - name: Run TruffleHog
         run: |
           output=$(docker run --rm -v "$PWD:/pwd" trufflesecurity/trufflehog:latest github --repo https://github.com/IgorBaio/SecretScanning-SAST.git --exclude_paths=/pwd/trufflehog-exclude-path.txt)
-          echo "::set-output name=trufflehog_output::$(echo $output) | tr -d '\r'"
+          echo "::set-output name=trufflehog_output::$(echo "$output" | tr -d '\r')"
 
       - name: Create Issue
         run: |
-          if [[ "$trufflehog_output" == * "Found result - unable to verify due to error 🐷🔑❗️" ||  ]]; then
+          if [[ "$trufflehog_output" == * "Found result - unable to verify due to error 🐷🔑❗️" ]]; then
 
             curl -L \
               -X POST \
